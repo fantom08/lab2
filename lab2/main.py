@@ -22,12 +22,17 @@ class MainWindow(QMainWindow):
         self.combo = QComboBox()
         self.combo.addItems(["Ч/б", "Размытие", "Яркость"])
         self.label = QLabel(self.combo.currentText())
+        self.combo.currentIndexChanged.connect(self.on_combo_select)
 
         layout.addWidget(self.combo)
         layout.addWidget(self.label)
 
         central_widget.setLayout(layout)
         self.setCentralWidget(central_widget)
+
+    def on_combo_select(self, index):
+        """Отображает выбранный фильтр."""
+        self.label.setText(self.combo.itemText(index))
 
 
 def main():
