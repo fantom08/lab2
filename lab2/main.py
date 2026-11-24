@@ -19,6 +19,13 @@ class MainWindow(QMainWindow):
         central_widget = QWidget()
         layout = QVBoxLayout()
 
+        self.combo = QComboBox()
+        self.combo.addItems(["Ч/б", "Размытие", "Яркость"])
+        self.label = QLabel(self.combo.currentText())
+
+        layout.addWidget(self.combo)
+        layout.addWidget(self.label)
+
         central_widget.setLayout(layout)
         self.setCentralWidget(central_widget)
 
